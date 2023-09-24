@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+Remove User
+{% endblock title %}
+
+{% block body %}
+{% if current_user.is_authenticated and current_user.type.lower() == 'admin' %}
+
+<div class="container mt-3">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email ID</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <th scope="row">{{user.username}}</th>
+                <th scope="row">{{user.email}}</th>
+                <td><a href="/deleteuser/{{user.id}}"><button
+                            onclick="return confirm('Are you sure to Delete {{user.username}}?');"
+                            class="btn btn-danger">Delete</button> </a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock body %}

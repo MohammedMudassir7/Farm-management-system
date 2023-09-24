@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+Farm Management System
+{% endblock title %}
+{% block home %}
+menu-active
+{% endblock home %}
+
+{% block body %}
+<section id="intro">
+  <div class="intro-container" data-aos="zoom-in" data-aos-delay="100">
+    <h1 class="mb-4 pb-0">BUY AND SELL AGRO PRODUCTS</span></h1>
+    <p class="mb-4 pb-0">DBMS Mini Project </p>
+    {% if current_user.is_authenticated %}
+    {% if current_user.type.lower() == 'admin' %}
+    <a href="/addfarming" class="about-btn scrollto">Add Farming Type</a>
+    <a href="/viewusers" class="about-btn scrollto">View Users</a>
+    <a href="/triggers" class="about-btn scrollto">Check Records</a>
+    {% else %}
+    <a href="/register" class="about-btn scrollto">Farmer Registration</a>
+    <a href="/agroproducts" class="about-btn scrollto">Agricultural Products for Sale</a>
+    <a href="/myagroproducts" class="about-btn scrollto">Your Agro Products</a>
+    <a href="/farmerdetails" class="about-btn scrollto">Farmer Details</a>
+    {% endif %}
+    {% else %}
+    <a href="/login" class="about-btn scrollto">Login</a>
+    <a href="/signup" class="about-btn scrollto">Signup</a>
+    {% endif %}
+  </div>
+</section>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+  </div>
+  <div class="container">
+    <div class="credits">
+      <br>
+      Developed by <a href="/">Mohammed Mudassir Viquar</a>
+    </div>
+  </div>
+</footer><!-- End  Footer -->
+{% endblock body %}
